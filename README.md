@@ -7,9 +7,9 @@
 ## **HeartStone**: o que é?
   ![exemplo do jogo](https://imag.malavida.com/mvimgbig/download-fs/hearthstone-15581-4.jpg)
 
-### de forma resumida, HeartStone é um jogo de cartas onde cada jogador pode escolher um heroi e um deck de cartas possuindo lacaios e magias. 
+### de forma resumida, HeartStone é um jogo de cartas onde cada jogador pode escolher um heroi e um deck de cartas possuindo lacaios e magias, cujo o objetivo é tentar conseguir zerar a vida do oponente primeiro. 
 
-#### Nesse exemplo serão postos no tabuleiro: 2 Herois (Aliado e Inimigo) e 2 Lacaios para cada heroi
+#### Nesse exemplo serão postos no tabuleiro: 2 Herois (Aliado e Inimigo) e 2 Lacaios para cada heroi, onde poderá ser feito um ataque de um Lacaio aliado.
 
 Regras:
 >- Cada heroi pode começar com até no mínimo *1* e no máximo *30* pontos de vida.
