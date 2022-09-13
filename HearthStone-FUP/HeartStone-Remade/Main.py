@@ -1,10 +1,20 @@
 from Heroi import Heroi
 from Lacaio import Lacaio
+from Tabuleiro import Tabuleiro
 
+def separador():
+    print("=-=-=-=-=-=-=-=-=")
 def inicio():
     print("_____________________________"
       "| BEM VINDOS A HEARTSTONE   |"
       "____________________________")
+
+    tabulero = criarTabuleiro()
+    
+    tabulero.printar_tabuleiro()
+    
+    tabulero.realizar_ataque()
+    tabulero.printar_tabuleiro()
 
 def validaVida(entrada, tipo_de_alvo)-> bool:
     if  entrada.isnumeric():
@@ -20,9 +30,9 @@ def validaVida(entrada, tipo_de_alvo)-> bool:
 def validaDano(entrada) -> bool:
     if  entrada.isnumeric():
         entrada = int(entrada)
-        validacao_de_dano = (0 < entrada <= 10) 
+        validacao_de_dano = (0 <= entrada <= 10) 
 
-        if validacao_de_dano:
+        if validacao_de_dano: 
             return True
         
     return False
@@ -37,7 +47,7 @@ def criarHeroi() -> Heroi:
     heroi = Heroi(nome, int(vida))
     return heroi
 
-def criarLacaio(heroi):
+def criarLacaio() -> Lacaio:
     nome_do_lacaio = input("Qual o nome do lacaio? ")
     pontos_de_vida = "naoNumerico"
     pontos_de_dano = "naoNumerico"
@@ -48,16 +58,41 @@ def criarLacaio(heroi):
             print("Entrada inválida")
 
     while not validaDano(pontos_de_dano):
-        pontos_de_dano = input(f"Qauntos pontos de dano causa {nome_do_lacaio}")
+        pontos_de_dano = input(f"Qauntos pontos de dano causa {nome_do_lacaio} (entre 0 e 10) ")
         if not validaDano(pontos_de_dano):
             print("Entrada inválida")
 
     lacaio =  Lacaio(nome_do_lacaio, int(pontos_de_vida),int(pontos_de_dano))
+
+    return lacaio
     
-    lacaios = heroi.getLacaios()
-    lacaios.append(lacaio)
-    heroi.setLacaios(lacaios)
+def criarTabuleiro() -> Tabuleiro :
+    separador()
+    print("Heroi Aliado: ")
+    separador()
+    heroi_aliado = criarHeroi()
+    separador()
+    print("Heroi inimigo: ")
+    separador()
+    heroi_inimigo = criarHeroi()
+    separador()
+    print("Lacaio Aliado 1:")
+    separador()
+    lacaio_aliado_1 = criarLacaio()
+    separador()
+    print("Lacaio Aliado 2:")
+    separador()
+    lacaio_aliado_2 = criarLacaio()
+    separador()
+    print("Lacaio Inimigo 1:")
+    separador()
+    lacaio_inimigo_1=criarLacaio()
+    separador()
+    print("Lacaio Inimigo 2:")
+    separador()
+    lacaio_inimigo_2=criarLacaio()
+    tabuleiro = Tabuleiro(heroi_aliado=heroi_aliado,heroi_inimigo=heroi_inimigo,lacaio_aliado_1=lacaio_aliado_1,lacaio_aliado_2=lacaio_aliado_2,lacaio_inimigo_1=lacaio_inimigo_1,lacaio_inimigo_2=lacaio_inimigo_2)
+    
+    return tabuleiro
 
-
-teste = criarHeroi()
-print(teste.getNome())
+inicio()
